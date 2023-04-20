@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const userHandler = require('./handler/user');
+const verify = require('../middleware/verifyToken');
+router.post('/login',userHandler.login);
+router.post('/register',userHandler.register);
+router.put('/',verify,userHandler.update);
+router.get('/',verify,userHandler.getUser);
+router.post('/logout',verify,userHandler.logout);
+module.exports = router;
